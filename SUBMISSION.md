@@ -181,4 +181,3 @@ The database record counts remained unchanged after a full pipeline re-run. The 
 2. Add integration tests for crash recovery, orphan relinking, and full pipeline idempotency.
 3. Benchmark the large generated dataset and optimize database operations if needed.
 4. Add stronger transaction and file-resumption guarantees.
-5. Evaluate PostgreSQL for a concurrent production ingestion workload.
