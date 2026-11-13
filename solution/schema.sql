@@ -85,6 +85,34 @@ CREATE TABLE IF NOT EXISTS rejections (
         REFERENCES batches(id)
 );
 
+
+CREATE TABLE IF NOT EXISTS ingestion_records (
+    id INTEGER PRIMARY KEY,
+
+    source_file_id INTEGER NOT NULL,
+
+    record_type TEXT NOT NULL,
+
+    record_number INTEGER NOT NULL, 
+
+    outcome TEXT NOT NULL,
+
+    reason TEXT,
+
+    warnings_json TEXT NOT NULL DEFAULT '[]',
+
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    UNIQUE(source_file_id, record_type, record_number),
+
+    FOREIGN KEY(source_file_id)
+        REFERENCES ingestion_files(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_ingestion_records_outcome
+ON ingestion_records(record_type, outcome);
+
+
 -- Indexes for frequently used lookups.
 CREATE INDEX IF NOT EXISTS idx_leads_workflow
     ON leads(workflow_id);

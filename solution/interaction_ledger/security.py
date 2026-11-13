@@ -1,8 +1,11 @@
 import hashlib
 import os
-
+from pathlib import Path
+from dotenv import load_dotenv
 from cryptography.fernet import Fernet
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
+load_dotenv(PROJECT_ROOT / ".env")
 
 def get_encryption_key():
     key = os.environ.get("PII_ENCRYPTION_KEY")
