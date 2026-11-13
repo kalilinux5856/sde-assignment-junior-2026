@@ -18,6 +18,9 @@ source .venv/bin/activate
 # Install Assignment A dependencies
 pip install -r solution/requirements.txt
 
+# Generate the input dataset
+python assignment-a-data/tools/generate_data.py --seed 42 --scale small --out data
+
 # Configure PII encryption
 python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())"
 ```
