@@ -149,7 +149,7 @@ def ingest_event_file(file_path: Path) -> dict:
     checking ingestion_records for previously processed lines.
     """
 
-    file_path = file_path.resolve()
+    file_path = Path(file_path).resolve()
     content_hash = calculate_file_hash(file_path)
     source_path = str(file_path)
 
